@@ -1,0 +1,53 @@
+﻿@model List<Slider>
+@{
+    ViewData["Title"] = "Slider page";
+    //List<Slider> sliders = Model;
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sliders</h4>
+                    <div class="table-responsive">
+                        <a class="btn btn-primary" asp-action="Create">Create</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Offer</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var sliderItem in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/assets/images/website-images/@sliderItem.Image" />
+                                        </td>
+                                        <td>@sliderItem.Title</td>
+                                        <td>@sliderItem.Offer</td>
+                                        <td>
+                                            <a class="btn btn-success" asp-action="Detail" asp-route-id="@sliderItem.Id">Detail</a>
+                                            <a class="btn btn-warning" asp-action="Update" asp-route-id=@sliderItem.Id>Update</a>
+                                            @if(ViewBag.Count == 1)
+                                            {
+                                                <a class="btn btn-danger disabled" asp-action="Delete" asp-route-id=@sliderItem.Id>Delete</a>
+                                            }else
+                                            {
+                                                <a class="btn btn-danger" asp-action="Delete" asp-route-id=@sliderItem.Id>Delete</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

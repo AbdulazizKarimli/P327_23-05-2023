@@ -1,0 +1,14 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>@Model.Name</h1>
+
+<ul>
+    @foreach (var item in Model.ProductTags)
+    {
+        <li>@item.Tag.Name</li>
+    }
+</ul>
+

@@ -1,0 +1,46 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Name: @Model.Name</h4>
+            <h4>Products</h4>
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="~/assets/images/website-images/@product.Image" />
+                                            </td>
+                                            <td>@product.Name</td>
+                                            <td>@product.Price</td>
+                                            <td>@product.Rating</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a class="btn btn-info" asp-action="Index">Go Back</a>
+        </div>
+    </div>
+</div>
